@@ -16,7 +16,7 @@ config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL, 'http://localhost:5175'],
+    origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL, "https://plus-student.vercel.app", "https://plus-admin.vercel.app"],
     methods: ["GET", "PUT", "POST", "DELETE"],
     credentials: true,
   })
