@@ -52,15 +52,17 @@ export const studentRegister = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   try {
-    const { email, password, confirmPassword, role } = req.body;
-    if (!email || !password || !confirmPassword || !role) {
-      return res.status(400).json({ message: "Please enter all credentials" });
+    const { email, password, role } = req.body;
+    if (!email){
+      return res.status(400).json({ message: "Missing Email" });
     }
-    if (password != confirmPassword) {
-      return res
-        .status(400)
-        .json({ message: "Password and confirm password do not match" });
+    if(!password){
+      return res.status(400).json({ message: "Missing Password" });
     }
+    if(!role){
+      return res.status(400).json({ message: "Missing Role" });
+    }
+
     const user = await User.findOne({ email }).select("+password");
     if (!user) {
       return res
