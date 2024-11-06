@@ -151,6 +151,8 @@ export const logoutAdmin = async (req, res) => {
       .status(200)
       .cookie("adminToken", "", {
         httpOnly: true,
+        secure: true,
+        sameSite: 'None',
         expires: new Date(Date.now()),
       })
       .json({
@@ -168,6 +170,8 @@ export const logoutStudent = async (req, res) => {
       .status(200)
       .cookie("studentToken", "", {
         httpOnly: true,
+        secure: true,
+        sameSite: 'None',
         expires: new Date(Date.now()),
       })
       .json({

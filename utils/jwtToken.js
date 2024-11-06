@@ -12,8 +12,8 @@ export const generateToken = (user, message, statusCode, res) => {
     .cookie(cookieName, token, {
       expires: cookieExpirationDate,
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      secure: true,
+      sameSite: 'None',
     })
     .json({
       success: true,
