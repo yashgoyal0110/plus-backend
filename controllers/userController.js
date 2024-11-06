@@ -74,7 +74,7 @@ export const login = async (req, res, next) => {
     if (role != user.role) {
       return res.status(400).json({ message: "User with this role not found" });
     }
-    generateToken(user, "user enIn!", 200, res);
+    generateToken(user, "user loggedIn!", 200, res);
   } catch (err) {
     console.log(err);
     return res.status(500).send(err);
