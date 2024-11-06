@@ -13,6 +13,7 @@ export const generateToken = (user, message, statusCode, res) => {
       expires: cookieExpirationDate,
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
     })
     .json({
       success: true,
