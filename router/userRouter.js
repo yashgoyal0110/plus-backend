@@ -23,6 +23,6 @@ router.get("/admin/me", isAdminAuthenticated, getUserDetails);
 router.get("/student/me", isStudentAuthenticated, getUserDetails);
 router.get("/student/logout", isStudentAuthenticated, logoutStudent);
 router.get("/admin/logout", isAdminAuthenticated, logoutAdmin);
-router.post("/instructor/addnew", addNewInstructor);
+router.post("/instructor/addnew", isAdminAuthenticated, addNewInstructor);
 router.delete("/deleteinstructor/:id", isAdminAuthenticated, deleteInstructor);
 export default router;

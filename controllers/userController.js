@@ -53,13 +53,13 @@ export const studentRegister = async (req, res, next) => {
 export const login = async (req, res, next) => {
   try {
     const { email, password, role } = req.body;
-    if (!email){
+    if (!email) {
       return res.status(400).json({ message: "Missing Email" });
     }
-    if(!password){
+    if (!password) {
       return res.status(400).json({ message: "Missing Password" });
     }
-    if(!role){
+    if (!role) {
       return res.status(400).json({ message: "Missing Role" });
     }
 
@@ -154,7 +154,7 @@ export const logoutAdmin = async (req, res) => {
       .cookie("adminToken", "", {
         httpOnly: true,
         secure: true,
-        sameSite: 'None',
+        sameSite: "None",
         expires: new Date(Date.now()),
       })
       .json({
@@ -173,7 +173,7 @@ export const logoutStudent = async (req, res) => {
       .cookie("studentToken", "", {
         httpOnly: true,
         secure: true,
-        sameSite: 'None',
+        sameSite: "None",
         expires: new Date(Date.now()),
       })
       .json({

@@ -11,7 +11,7 @@ export const addCourse = async (req, res, next) => {
       validity,
       imageUrl,
       embedLink1,
-      embedLink2,
+      embedLink2,      
     } = req.body;
     if (
       !title ||
@@ -47,6 +47,7 @@ export const addCourse = async (req, res, next) => {
       imageUrl,
       embedLink1,
       embedLink2,
+      
     });
     return res.status(200).json({
       success: true,
