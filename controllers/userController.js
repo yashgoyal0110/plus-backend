@@ -265,7 +265,6 @@ export const deleteInstructor = async (req, res, next) => {
     await user.deleteOne();
     return res.status(200).json({ message: "Instructor successfully deleted" });
   } catch (err) {
-    console.log(err);
     return res.status(500).json(err.message);
   }
 };
