@@ -45,8 +45,7 @@ export const studentRegister = async (req, res, next) => {
     });
     generateToken(user, "user registered!", 200, res);
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ err });
+    return res.status(500).json(err.message);
   }
 };
 
@@ -78,8 +77,7 @@ export const login = async (req, res, next) => {
     }
     generateToken(user, "user loggedIn!", 200, res);
   } catch (err) {
-    console.log(err);
-    return res.status(500).send(err);
+    return res.status(500).json(err.message);
   }
 };
 
@@ -125,8 +123,7 @@ export const addNewAdmin = async (req, res, next) => {
     });
     return res.status(200).json({ message: "New Admin Registered" });
   } catch (err) {
-    console.log(err);
-    return res.status(500).send(err);
+    return res.status(500).json(err.message);
   }
 };
 
@@ -135,8 +132,7 @@ export const getAllInstructors = async (req, res, next) => {
     const instructors = await User.find({ role: "Instructor" });
     return res.status(200).json({ instructors });
   } catch (err) {
-    console.log(err);
-    return res.status(500).send(err);
+    return res.status(500).json(err.message);
   }
 };
 export const getUserDetails = async (req, res, next) => {
@@ -161,8 +157,7 @@ export const logoutAdmin = async (req, res) => {
         message: "Admin loggedOut successfully",
       });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ error: err });
+    return res.status(500).json(err.message);
   }
 };
 
@@ -180,8 +175,7 @@ export const logoutStudent = async (req, res) => {
         message: "Student loggedOut successfully",
       });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ error: err });
+    return res.status(500).json(err.message);
   }
 };
 
@@ -257,8 +251,7 @@ export const addNewInstructor = async (req, res, next) => {
       .status(200)
       .json({ message: "Instructor added successfully", instructor });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ error: err });
+    return res.status(500).json(err.message);
   }
 };
 
@@ -273,6 +266,6 @@ export const deleteInstructor = async (req, res, next) => {
     return res.status(200).json({ message: "Instructor successfully deleted" });
   } catch (err) {
     console.log(err);
-    return res.status(500).json({ error: err });
+    return res.status(500).json(err.message);
   }
 };

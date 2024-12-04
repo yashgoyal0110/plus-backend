@@ -69,8 +69,7 @@ export const postSlot = async (req, res, next) => {
     });
     return res.status(200).json({ message: "Slot Booked Successfully", slot });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ err });
+    return res.status(500).json(err.message);
   }
 };
 
@@ -79,8 +78,7 @@ export const getAllSlots = async (req, res, next) => {
     const slots = await Slots.find();
     return res.status(200).json({ slots });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ err });
+    return res.status(500).json(err.message);
   }
 };
 
@@ -101,8 +99,7 @@ export const updateSlotStatus = async (req, res) => {
       slot,
     });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ error: err });
+    return res.status(500).json(err.message);
   }
 };
 
@@ -116,7 +113,6 @@ export const deleteSlot = async (req, res, next) => {
     await slot.deleteOne();
     return res.status(200).json({ message: "slot successfully deleted" });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ error: err });
+    return res.status(500).json(err.message);
   }
 };

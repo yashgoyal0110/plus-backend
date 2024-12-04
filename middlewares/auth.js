@@ -16,8 +16,7 @@ export const isAdminAuthenticated = async (req, res, next) => {
     }
     next();
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ err });
+    return res.status(500).json(err.message);
   }
 };
 
@@ -36,8 +35,7 @@ export const isStudentAuthenticated = async (req, res, next) => {
     }
     next();
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ err });
+    return res.status(500).json(err.message);
   }
 };
 
@@ -48,7 +46,6 @@ export const getUserDetails = async (req, res) => {
       user,
     });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ err });
+    return res.status(500).json(err.message);
   }
 };

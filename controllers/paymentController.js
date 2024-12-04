@@ -8,11 +8,10 @@ export const payment = async (req, res) => {
     const options = req.body;
     const order = await razorpay.orders.create(options);
     if(!order){
-        res.status(400).json({message: "An error occured"})
+        return res.status(400).json({message: "An error occured"})
     }
-    res.status(200).json({message: "Successful", order})
+    return res.status(200).json({message: "Successful", order})
   } catch (err) {
-    console.log(err);
-    res.status(500).json({err})
+    return res.status(500).json({err})
   }
 };

@@ -54,8 +54,7 @@ export const addCourse = async (req, res, next) => {
       message: "Course added successfully",
     });
   } catch (err) {
-    res.status(500).send(err);
-    console.log(err);
+    return res.status(500).json(err.message);
   }
 };
 
@@ -64,8 +63,7 @@ export const getAllCourses = async (req, res, next) => {
     const courses = await Courses.find();
     res.status(200).json({ courses });
   } catch (err) {
-    res.status(500).send(err);
-    console.log(err);
+    return res.status(500).json(err.message);
   }
 };
 
@@ -80,7 +78,6 @@ export const deleteCourse = async (req, res, next) => {
     await course.deleteOne();
     return res.status(200).json({ message: "Course successfully deleted" });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ error: err });
+    return res.status(500).json(err.message);
   }
 };

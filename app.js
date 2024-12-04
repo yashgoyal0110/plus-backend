@@ -10,8 +10,6 @@ import slotRouter from './router/slotRouter.js'
 import courseRouter from './router/courseRouter.js'
 import paymentRouter from './router/paymentRouter.js'
 
-
-
 const app = express();
 config({ path: "./config/config.env" });
 

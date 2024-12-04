@@ -14,19 +14,16 @@ export const sendMessage = async (req, res, next) => {
       message: "message send successfully",
     });
   } catch (err) {
-    res.status(500).send(err);
-    console.log(err);
+    return res.status(500).json(err.message);
   }
 };
 
 export const getAllMessages = async (req, res, next) => {
-  try{
-  const messages = await Message.find();
-  res.status(200).json({messages});
-  }
-  catch(err){
-    res.status(500).send(err);
-    console.log(err);
+  try {
+    const messages = await Message.find();
+    res.status(200).json({ messages });
+  } catch (err) {
+    return res.status(500).json(err.message);
   }
 };
 
@@ -40,7 +37,6 @@ export const deleteMessage = async (req, res, next) => {
     await message.deleteOne();
     return res.status(200).json({ message: "message successfully deleted" });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ error: err });
+    return res.status(500).json(err.message);
   }
 };
